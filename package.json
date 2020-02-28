@@ -1,0 +1,29 @@
+{
+  "name": "annotate-html",
+  "version": "1.0.0",
+  "description": "A web service that annotates HTML snippets by hyperlinking names",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/david0leong/annotate-html.git"
+  },
+  "keywords": [
+    "RESTful",
+    "API",
+    "HTML"
+  ],
+  "author": "David Leong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/david0leong/annotate-html/issues"
+  },
+  "homepage": "https://github.com/david0leong/annotate-html#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
