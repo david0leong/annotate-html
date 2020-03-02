@@ -2,13 +2,13 @@ const express = require('express');
 
 const CustomError = require('../utils/error');
 const { isNameValid, isUrlValid } = require('../utils/validation');
-const namesDataSource = require('../data/names');
+const annotationsDataSource = require('../data/annotations');
 
 const router = express.Router();
 
 router.get('/:name', function(req, res, next) {
   const { name } = req.params;
-  const url = namesDataSource.getByName(name);
+  const url = annotationsDataSource.getByName(name);
 
   if (!url) {
     throw new CustomError(404, 'Name not found');
@@ -29,7 +29,7 @@ router.put('/:name', function(req, res, next) {
     throw new CustomError(400, 'Invalid url');
   }
 
-  namesDataSource.add(name, url);
+  annotationsDataSource.add(name, url);
 
   res.send({ name, url });
 });
