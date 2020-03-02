@@ -8,7 +8,12 @@ const router = express.Router();
 
 router.get('/:name', function(req, res, next) {
   const { name } = req.params;
-  const url = annotationsDataSource.getByName(name);
+
+  if (!isNameValid(name)) {
+    throw new CustomError(400, 'Invalid name');
+  }
+
+  const url = annotationsDataSource.getByName(name.toLowerCase());
 
   if (!url) {
     throw new CustomError(404, 'Name not found');
@@ -29,9 +34,9 @@ router.put('/:name', function(req, res, next) {
     throw new CustomError(400, 'Invalid url');
   }
 
-  annotationsDataSource.add(name, url);
+  annotationsDataSource.add(name.toLowerCase(), url);
 
-  res.send({ name, url });
+  res.send({ name: name.toLowerCase(), url });
 });
 
 router.delete('/', function(req, res, next) {
