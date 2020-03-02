@@ -8,7 +8,7 @@
 # 3. %> ./test.sh
 
 HOST=localhost                  # name of HOST at which your server is running
-PORT=3200                       # PORT on which your server is listening
+PORT=3000                       # PORT on which your server is listening
 
 OUT=out.txt                     # output file this script will write to
 EXP=expected_out.txt            # file that contains expected contents of the output file after this script is run
@@ -21,13 +21,14 @@ formatHTML() {
 rm -f $OUT
 touch $OUT
 
-echo >> $OUT
 echo '=== Test create, fetch, update ===' >> $OUT
 curl -XDELETE "http://$HOST:$PORT/names"
 curl -H 'Content-Type:application/json' -XPUT "http://$HOST:$PORT/names/alex" -d '{ "url": "http://alex.com" }'
 curl -XGET "http://$HOST:$PORT/names/alex" >> $OUT
+echo >> $OUT
 curl -H 'Content-Type:application/json' -XPUT "http://$HOST:$PORT/names/alex" -d '{ "url": "http://alex.org" }'
 curl -XGET "http://$HOST:$PORT/names/alex" >> $OUT
+echo >> $OUT
 curl -XDELETE "http://$HOST:$PORT/names"
 curl -XGET "http://$HOST:$PORT/names/alex" -s -o /dev/null -w 'HTTP status code: %{http_code}\n' >> $OUT
 

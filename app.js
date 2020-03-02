@@ -7,7 +7,7 @@ const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
 
-const port = process.env.PORT || 3200;
+const port = process.env.PORT || 3000;
 
 // Middlewares
 app.use(bodyParser.json());
