@@ -8,7 +8,7 @@
 # 3. %> ./test.sh
 
 HOST=localhost                  # name of HOST at which your server is running
-PORT=3000                       # PORT on which your server is listening
+PORT=3200                       # PORT on which your server is listening
 
 OUT=out.txt                     # output file this script will write to
 EXP=expected_out.txt            # file that contains expected contents of the output file after this script is run

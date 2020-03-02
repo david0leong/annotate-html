@@ -1,4 +1,4 @@
-const annotations = {};
+let annotations = {};
 
 module.exports = {
   getAll() {
@@ -13,7 +13,11 @@ module.exports = {
     annotations[name] = url;
   },
 
-  delete(name) {
+  deleteByName(name) {
     delete annotations[name];
+  },
+
+  deleteAll() {
+    annotations = {};
   },
 };

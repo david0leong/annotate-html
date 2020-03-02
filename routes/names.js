@@ -34,4 +34,10 @@ router.put('/:name', function(req, res, next) {
   res.send({ name, url });
 });
 
+router.delete('/', function(req, res, next) {
+  annotationsDataSource.deleteAll();
+
+  res.status(204).send();
+});
+
 module.exports = router;
